@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid</title>
+  <style>
+    .grid-container { /*only has the neeseasary space needed for all divs */
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Spesifies the colm width, 1 new arguement = 1 new colm */
+      grid-template-rows: 1fr 2fr 2fr; /* Spesifies the row height, 1 new arguement = 1 new row */
+      gap: 5px;
+    }
+      /* Interestingly, when you call display: grid by itself, it creates a 1x1 grid as a standard.
+
+      You have to call a div for the div to occupy a row/colm 
+      and you have to ensure there are enough rows/colms to occupy
+      (in order for your boxes to show up) <-- (as .card
+      is not (and should not) be spesifying a fixed height/width)
+      
+      This allows for flush and consistent div sizes across the website and using something
+      like fr or em allows for easier responsiveness.
+
+      Fr represents 1 part (or fraction) of the avaiable space (i.e the webpage). 
+      For instance in grid-template-rows: 5fr 1fr 2fr; we have a total of 8fr. Meaning that
+      the first row takes up 5/8, the 2nd 1/8 and so on (NOT COUNTING GAP!) and because divs by default
+      are only as big as needed (to ensure everything inside the div fits) this can become a little conveluted.
+
+      */
+    
+   
+
+
+    .first {
+      display: grid;
+      grid-column: span 2;
+    }
+
+    .card {
+      background-color: blue;
+    }
+
+    .card2 {
+      background-color: red;
+    }
+
+    .center {
+      text-align: center;
+      align-self: center; /* Aligns element, in this case h2, to the center of the grid, i.e called in .first not grid-container */
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+  <h1>CSS Grid</h1>
+  <div class="grid-container">
+
+    <div class="first card"><h2 class="center">You are my special</h2></div>
+
+    <div class="card"> 
+      <div class="grid-container">
+        <div class="first card"><h2 class="center">You are my special</h2></div>
+        <div class="card2"></div>
+        <div class="card2"></div>
+        <div class="card2"></div>
+        <div class="card2"></div>
+      </div> 
+    </div>
+
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  
+ 
+  </div>
+</body>
+
+</html>
+
