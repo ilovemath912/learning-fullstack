@@ -11,36 +11,60 @@
       display: flex;
     }
 
+    @media (max-width: 767px) {
+      .flex-container {
+        flex-direction: row; /* by defualts its row */
+      }
+    }
+
     .card {
       background: blue;
-      border: 1rem solid white;
-      height: 10rem;
-      flex: 1;
+      border: 0.5rem solid white;
+      height: 20rem;
+      flex: 1 4 auto;
     }
 
     .first {
       flex: 2;
     }
 
+    /* So how flexbox works is essientially, it generates a box with the width of a page and just enough
+    height to fill the items in. Next, you can then use the flex property to tweak the flex-boxes that have been
+    called in the HTML, flex is just shorthand for flex-grow, flex-shrink, flex-basis
+
+    flex-grow:
+    Determines how much a flex item can grow relative to the other flex items in the flex container.
+    It takes a unitless value, typically a number, indicating the proportion of available space the item should take up compared to other items.
+    For example, if all flex items have flex-grow: 1, they will all grow at the same rate to fill the available space.
+
+    flex-shrink:
+    Determines how much a flex item can shrink relative to the other flex items in the flex container when there's not enough space.
+    Also takes a unitless value, usually a number, indicating the ability to shrink compared to other items.
+    If set to 0, the item won't shrink.
+
+    flex-basis:
+    Specifies the initial size of the flex item before any remaining space is distributed.
+    It can be a length value (like px, em, etc.) or a percentage.
+    Alternatively, it can be set to auto, which means the browser will calculate the initial size based on the item's content.
+    
+    */
+
+
 
 
 
     .grid-container {
       display: grid;
-      grid-template-columns: 1fr 1fr; 
+      grid-template-columns: 2fr 1fr 1fr; 
       grid-template-rows: 10rem; 
     }
 
     .cardboard{
       background-color: aqua;
-      border: 1rem solid white;
+      border: 0.5rem solid white;
     }
 
-    @media screen and (max-width: 767px) {
-      .flex-container {
-        flex-direction: column; /* by defualts its row */
-      }
-    }
+
 
   </style>
 </head>
@@ -48,13 +72,21 @@
 <body>
   <h1>CSS Flexbox</h1>
   <div class="flex-container">
-    <div class="first card"></div>
+    <div class="first card">
+      <div class="grid-container">
+        <div class="cardboard"></div>
+        <div class="cardboard"></div>
+        <div class="cardboard"></div>
+      </div>
+      
+    </div>
     <div class="card"></div>
     <div class="card"></div>
     
   </div>
 
   <div class="grid-container">
+    <div class="cardboard"></div>
     <div class="cardboard"></div>
     <div class="cardboard"></div>
   </div>
@@ -70,6 +102,9 @@ of the page while keeping just about enough height to encapsulate the text)
 Flex on the other hand will make everything within a container with the flex property, take on the flex property.
 meaning that it'll try to shove everything onto one line (sort of like a block property in that it'll take up the entire width
 but like a inline property in that it tries to shove everything to the right)
+
+AS you've probably noticed, it seems the unitless numbers (representing proportions it seems) 
+of flex don't calculate the same way as fr (by just slightly...)
 
 --> 
 
