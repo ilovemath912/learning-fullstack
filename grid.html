@@ -12,6 +12,7 @@
       grid-template-rows: 1fr 2fr 2fr; /* Spesifies the row height, 1 new arguement = 1 new row */
       gap: 5px;
     }
+
       /* Interestingly, when you call display: grid by itself, it creates a 1x1 grid as a standard.
 
       You have to call a div for the div to occupy a row/colm 
@@ -20,21 +21,24 @@
       is not (and should not) be spesifying a fixed height/width)
       
       This allows for flush and consistent div sizes across the website and using something
-      like fr or em allows for easier responsiveness.
+      like fr allows for more coherent responsiveness.
 
       Fr represents 1 part (or fraction) of the avaiable space (i.e the webpage). 
-      For instance in grid-template-rows: 5fr 1fr 2fr; we have a total of 8fr. Meaning that
-      the first row takes up 5/8, the 2nd 1/8 and so on (NOT COUNTING GAP!) and because divs by default
-      are only as big as needed (to ensure everything inside the div fits) this can become a little conveluted.
+      For example, if you have a grid container with three columns, and you define them as 1fr 2fr 1fr, it means 
+      that the second column will occupy twice as much space as the first and third columns, 
+      as it has 2 fr units compared to their 1 fr unit each. 
 
+      I.e grid-template-rows: 1fr 2fr 2fr;
+      The first column will take up 1/5 of the available space.
+      The second and third columns will each take up 2/5 of the available space.
+
+      (NOT COUNTING GAP!) and because divs by default
+      are only as big as needed (to ensure everything inside the div fits) this can become a little conveluted
       */
     
-   
-
-
     .first {
-      display: grid;
       grid-column: span 2;
+      display: grid;
     }
 
     .card {
@@ -80,4 +84,3 @@
 </body>
 
 </html>
-

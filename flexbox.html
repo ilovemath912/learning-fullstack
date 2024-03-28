@@ -6,14 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS Flexbox</title>
   <style>
+
     .flex-container {
       display: flex;
     }
 
     .card {
       background: blue;
-      border: 30px solid white;
-      height: 100px;
+      border: 1rem solid white;
+      height: 10rem;
       flex: 1;
     }
 
@@ -21,9 +22,26 @@
       flex: 2;
     }
 
-    .second {
-      flex: 0.5;
+
+
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 10rem; 
     }
+
+    .cardboard{
+      background-color: aqua;
+      border: 1rem solid white;
+    }
+
+    @media screen and (max-width: 767px) {
+      .flex-container {
+        flex-direction: column; /* by defualts its row */
+      }
+    }
+
   </style>
 </head>
 
@@ -31,12 +49,28 @@
   <h1>CSS Flexbox</h1>
   <div class="flex-container">
     <div class="first card"></div>
-    <div class="second card"></div>
     <div class="card"></div>
     <div class="card"></div>
+    
   </div>
 
+  <div class="grid-container">
+    <div class="cardboard"></div>
+    <div class="cardboard"></div>
+  </div>
 
 </body>
+
+
+
+<!-- Interestingly enough, by default some elements come preset with spesific display properities
+for instance a heading comes preset as a block (so it takes up the entire width
+of the page while keeping just about enough height to encapsulate the text)
+
+Flex on the other hand will make everything within a container with the flex property, take on the flex property.
+meaning that it'll try to shove everything onto one line (sort of like a block property in that it'll take up the entire width
+but like a inline property in that it tries to shove everything to the right)
+
+--> 
 
 </html>
