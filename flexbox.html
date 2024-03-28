@@ -13,7 +13,7 @@
 
     @media (max-width: 767px) {
       .flex-container {
-        flex-direction: row; /* by defualts its row */
+        flex-direction: column; /* by defualts its row */
       }
     }
 
@@ -21,11 +21,11 @@
       background: blue;
       border: 0.5rem solid white;
       height: 20rem;
-      flex: 1 4 auto;
+      flex: 1 0 auto;
     }
 
     .first {
-      flex: 2;
+      flex: 2 0 auto; /* if it's in column mode, the size of your first card will be the same no mat */
     }
 
     /* So how flexbox works is essientially, it generates a box with the width of a page and just enough
@@ -49,10 +49,6 @@
     
     */
 
-
-
-
-
     .grid-container {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr; 
@@ -72,24 +68,16 @@
 <body>
   <h1>CSS Flexbox</h1>
   <div class="flex-container">
-    <div class="first card">
-      <div class="grid-container">
-        <div class="cardboard"></div>
-        <div class="cardboard"></div>
-        <div class="cardboard"></div>
-      </div>
-      
-    </div>
+    <div class="first card"></div>
     <div class="card"></div>
     <div class="card"></div>
-    
   </div>
 
-  <div class="grid-container">
+  <!-- <div class="grid-container">
     <div class="cardboard"></div>
     <div class="cardboard"></div>
     <div class="cardboard"></div>
-  </div>
+  </div> -->
 
 </body>
 
