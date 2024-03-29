@@ -1,68 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS Flexbox</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
   <style>
+
+    body, html {
+      height: 100%;
+    }
 
     .flex-container {
       display: flex;
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 767px) { 
       .flex-container {
-        flex-direction: column; /* by defualts its row */
+        flex-direction: row; 
       }
     }
 
-    .card { 
+    .cards { 
       background: blue;
       border: 0.5rem solid white;
       height: 20rem;
-      flex: 1 4 auto;
+      flex: 1 2 auto;
     }
 
-    /* becuz no set width and it's on auto: it's getting it's width based on flex-growth 
-    and how much space it's supposed to occupy even though it first looks at flex basis first for the elements width
+    /* 
+    becuz no set width and it's on auto: it's getting it's width based on flex-growth 
+    and how much space it's supposed to occupy even though it first looks at flex basis 
+    first for the elements width
     */
 
     .first {
       flex: 2 1 auto; /* if it's in column mode, the size of your first card will be the same no mat */
     }
 
-    /* So how flexbox works is essientially, it generates a box with the width of a page and just enough
-    height to fill the items in. Next, you can then use the flex property to tweak the flex-boxes that have been
-    called in the HTML, flex is just shorthand for flex-grow, flex-shrink, flex-basis
-
-    flex-grow:
-    Determines how much a flex item can grow relative to the other flex items in the flex container.
-    It takes a unitless value, typically a number, indicating the proportion of available space the item should take up compared to other items.
-    For example, if all flex items have flex-grow: 1, they will all grow at the same rate to fill the available space.
-
-    flex-shrink:
-    Determines how much a flex item can shrink relative to the other flex items in the flex container when there's not enough space.
-    Also takes a unitless value, usually a number, indicating the ability to shrink compared to other items.
-    If set to 0, the item won't shrink. [In other words it's shrinking factors when in a box with other elements, higher # = More Shrink]
-
-    flex-basis:
-    Specifies the initial size of the flex item before any remaining space is distributed.
-    It can be a length value (like px, em, etc.) or a percentage.
-    Alternatively, it can be set to auto, which means the browser will calculate the initial size based on the item's content.
-    [in other words, flex-basis sets a absolute value for the length (or width, idk) of an element before excess space is distrubuted by flex-grow 
-    (or the size manipulated by flex-shrink), it is the starting size/value of a elements size]
-
-    "In summary, flex-basis: auto; allows the flex item to size itself based on its content or 
-    any explicitly specified width or height, making it responsive to changes in content 
-    or explicit size settings. It essentially allows the flex item to "auto-size" along the main axis."
-    
-    */
-
     .grid-container {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr; 
-      grid-template-rows: 10rem; 
+      grid-template-rows: 10rem 10rem; 
     }
 
     .cardboard{
@@ -70,7 +55,12 @@
       border: 0.5rem solid white;
     }
 
-
+    .card-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
 
   </style>
 </head>
@@ -78,16 +68,28 @@
 <body>
   <h1>CSS Flexbox</h1>
   <div class="flex-container">
-    <div class="first card"></div>
-    <div class="card"></div>
-    <div class="card"></div>
+    <div class="first cards"></div>
+    <div class="cards"></div>
+    <div class="cards"></div>
   </div>
 
-  <!-- <div class="grid-container">
+  <div class="grid-container">
     <div class="cardboard"></div>
     <div class="cardboard"></div>
     <div class="cardboard"></div>
-  </div> -->
+  </div>
+
+  <div class="card-container">
+    <div class="card" style="width: 18rem;">
+      <img src="pexels-sarah-dorweiler-8408541.jpg" class="card-img-top" alt="boya">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+
 
 </body>
 
@@ -103,6 +105,40 @@ but like a inline property in that it tries to shove everything to the right)
 
 AS you've probably noticed, it seems the unitless numbers (representing proportions it seems) 
 of flex don't calculate the same way as fr (by just slightly...)
+
+
+
+Flex-Box
+
+So how flexbox works is essientially, it generates a box with the width of a page and just enough
+height to fill the items in. Next, you can then use the flex property to tweak the flex-boxes that have been
+called in the HTML, flex is just shorthand for flex-grow, flex-shrink, flex-basis
+
+flex-grow:
+Determines how much a flex item can grow relative to the other flex items in the flex container.
+It takes a unitless value, typically a number, indicating the proportion of available space the item should take up compared to other items.
+For example, if all flex items have flex-grow: 1, they will all grow at the same rate to fill the available space.
+
+flex-shrink:
+Determines how much a flex item can shrink relative to the other flex items in the flex container when there's not enough space.
+Also takes a unitless value, usually a number, indicating the ability to shrink compared to other items.
+If set to 0, the item won't shrink. [In other words it's shrinking factors when in a box with other elements, higher # = More Shrink]
+
+flex-basis:
+Specifies the initial size of the flex item before any remaining space is distributed.
+It can be a length value (like px, em, etc.) or a percentage.
+Alternatively, it can be set to auto, which means the browser will calculate the initial size based on the item's content.
+[in other words, flex-basis sets a absolute value for the length (or width, idk) of an element before excess space is distrubuted by flex-grow 
+(or the size manipulated by flex-shrink), it is the starting size/value of a elements size]
+
+"In summary, flex-basis: auto; allows the flex item to size itself based on its content or 
+any explicitly specified width or height, making it responsive to changes in content 
+or explicit size settings. It essentially allows the flex item to "auto-size" along the main axis."
+
+
+
+
+Bootstrap
 
 --> 
 
