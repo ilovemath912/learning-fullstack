@@ -7,25 +7,146 @@
   <title>Bootstrap Framework</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+      .class{
+        margin-left: 1rem;
+      }
+    </style>
+
 </head>
+
+
 
 <body>
   <h1>Bootstrap Framework</h1>
   <div class="container">
-    <div class="row">
-      <div class="card col-6">
+    <div class="row row-cols-2 gap-3"> <!-- One gap unit is 1 colum -->
+      <div class="class card col-auto">
         Card
       </div>
-      <div class="card col-2">
+      <div class="card col-9 col-md-8 col-sm-7 col-xs-">
         Card
       </div>
-      <div class="card col-4">
+      <div class="card col-auto">
+        Card
+      </div>
+    </div>
+    <div class="row row-cols-2 gap-3"> <!-- One gap unit is 1 colum -->
+      <div class="class card col-auto">
+        Card
+      </div>
+      <div class="card col-9 col-md-8 col-sm-7 col-xs-">
+        Card
+      </div>
+      <div class="card col-auto">
         Card
       </div>
     </div>
   </div>
 
 
+  <!-- <table class="table">
+    <thead>
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+        </tr>
+        <tr>
+            <td>Data 4</td>
+            <td>Data 5</td>
+            <td>Data 6</td>
+        </tr>
+        <tr>
+            <td>Data 7</td>
+            <td>Data 8</td>
+            <td>Data 9</td>
+        </tr>
+    </tbody>
+</table> -->
+
 </body>
 
+
+
 </html>
+
+
+
+<!-- Bootstrap is built on the 12 colm system, namely, for every row, there are 12 colmuns
+that you can make your containing elements can occupy, you can make a card occupy 6 colms like
+in first card! 
+
+Formatting of boostrap should always look like this
+
+container
+  row
+    col
+
+The only things that won't fit properly within a 12 colm grid.
+
+      <div class="card col">
+        Card
+      </div>
+
+      <div class="card col-auto offset-3">
+        Card
+      </div>
+
+- card col will have a number that is evenly distrubuted based on the hardcoded ratios, so if it's like col-2, col-6, col will = 4
+- card col-auto will try it's best to make sure there's only enough space for the card to wrap around the elements within the card.
+(This will come out to have a decminal width it seems)
+-Offset offsets the card 3 colms over.
+
+Bootstrap will try to fit everything on one line, however the moment we go above 12, it will push the element to the next row under.
+
+
+
+Breakpoints
+
+      <div class="card col-6 col-md-1 col-sm-10">
+        Card
+      </div>
+
+So basically for large screens, it will make the colm width 1. 
+For small screens, the colm width will be 10.
+Everything else will default down to col-6.
+
+For basically all pre-set bootstrap classes there is a breakpoint version of them that can
+be called like this
+
+class="[premade thing] col-[screensize]-[size]
+
+
+
+Setting Custom Colm Count per Row.
+
+    <div class="row row-cols-2">
+
+Notice how it's row-cols-2, not row-col-2, the syntax requires this.
+
+
+
+Sass (Syntactically Awesome Style Sheets)
+
+a "map" [in Sass] refers to a data structure that stores key-value pairs. 
+In Sass, a map is a collection of related data where each value is 
+associated with a unique key.
+
+$colors: (
+  primary: #3498db,
+  secondary: #2ecc71,
+  accent: #e74c3c
+);
+
+Key-value pairs defintion:
+i.e primary = key
+    #3498db = value.
